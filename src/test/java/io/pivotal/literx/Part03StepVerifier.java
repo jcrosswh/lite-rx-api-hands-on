@@ -19,7 +19,6 @@ import java.time.Duration;
 import java.util.function.Supplier;
 
 import io.pivotal.literx.domain.User;
-import static org.junit.Assert.fail;
 import org.junit.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
