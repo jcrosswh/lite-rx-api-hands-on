@@ -14,7 +14,7 @@ import reactor.test.StepVerifier;
  * @author Sebastien Deleuze
  */
 public class Part04Transform {
-
+    
     ReactiveRepository<User> repository = new ReactiveUserRepository();
 
 //========================================================================================
@@ -26,9 +26,9 @@ public class Part04Transform {
                 .verifyComplete();
     }
 
-    // TODO Capitalize the user username, firstname and lastname
+    // Capitalize the user username, firstname and lastname
     Mono<User> capitalizeOne(Mono<User> mono) {
-        return null;
+        return mono.map((u) -> new User(u.getUsername().toUpperCase(), u.getFirstname().toUpperCase(), u.getLastname().toUpperCase()));
     }
 
 //========================================================================================
@@ -44,9 +44,9 @@ public class Part04Transform {
                 .verifyComplete();
     }
 
-    // TODO Capitalize the users username, firstName and lastName
+    // Capitalize the users username, firstName and lastName
     Flux<User> capitalizeMany(Flux<User> flux) {
-        return null;
+        return flux.map((u) -> new User(u.getUsername().toUpperCase(), u.getFirstname().toUpperCase(), u.getLastname().toUpperCase()));
     }
 
 //========================================================================================
@@ -62,13 +62,14 @@ public class Part04Transform {
                 .verifyComplete();
     }
 
-    // TODO Capitalize the users username, firstName and lastName using asyncCapitalizeUser()
+    // Capitalize the users username, firstName and lastName using asyncCapitalizeUser()
     Flux<User> asyncCapitalizeMany(Flux<User> flux) {
-        return null;
+        // Could use flatMapSequential if I wanted to enforce the order
+        return flux.flatMap((u) -> asyncCapitalizeUser(u));
     }
-
+    
     Mono<User> asyncCapitalizeUser(User u) {
         return Mono.just(new User(u.getUsername().toUpperCase(), u.getFirstname().toUpperCase(), u.getLastname().toUpperCase()));
     }
-
+    
 }
