@@ -24,9 +24,9 @@ public class Part02Mono {
                 .verifyComplete();
     }
 
-    // TODO Return an empty Mono
+    // Return an empty Mono
     Mono<String> emptyMono() {
-        return null;
+        return Mono.empty();
     }
 
 //========================================================================================
@@ -41,9 +41,9 @@ public class Part02Mono {
                 .verify();
     }
 
-    // TODO Return an Mono that never emit any signal
+    // Return an Mono that never emit any signal
     Mono<String> monoWithNoSignal() {
-        return null;
+        return Mono.never();
     }
 
 //========================================================================================
@@ -55,9 +55,9 @@ public class Part02Mono {
                 .verifyComplete();
     }
 
-    // TODO Return a Mono that contains a "foo" value
+    // Return a Mono that contains a "foo" value
     Mono<String> fooMono() {
-        return null;
+        return Mono.just("foo");
     }
 
 //========================================================================================
@@ -68,9 +68,9 @@ public class Part02Mono {
                 .verifyError(IllegalStateException.class);
     }
 
-    // TODO Create a Mono that emits an IllegalStateException
+    // Create a Mono that emits an IllegalStateException
     Mono<String> errorMono() {
-        return null;
+        return Mono.error(new IllegalStateException());
     }
 
 }
